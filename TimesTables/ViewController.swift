@@ -14,17 +14,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var table: UITableView!
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 50
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = "Hi!"
+        cell.textLabel?.text = String((Int(slider.value * 20)) * (indexPath.row + 1))
         return cell
     }
     
     @IBAction func slideChange(_ sender: Any) {
-        print(slider.value)
+        table.reloadData()
     }
     
     override func viewDidLoad() {
